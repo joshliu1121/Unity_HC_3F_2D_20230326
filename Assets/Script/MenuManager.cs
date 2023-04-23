@@ -1,23 +1,23 @@
-using UnityEngine;  //¤Ş¥Î Unity ¤ŞÀº¨ç¦¡®w
+ï»¿using UnityEngine;  //å¼•ç”¨ Unity å¼•æ“å‡½å¼åº«
 using UnityEngine.SceneManagement;
 
 namespace LSC 
 {
-    //¸}¥»¦WºÙ:¥²¶·¸ò¥ª¤W¨¤ÀÉ®×¦WºÙ¤@¼Ë ¥]¬A¤j¤p¼g ¤£¯à¦³ªÅ®æ
+    //è…³æœ¬åç¨±:å¿…é ˆè·Ÿå·¦ä¸Šè§’æª”æ¡ˆåç¨±ä¸€æ¨£ åŒ…æ‹¬å¤§å°å¯« ä¸èƒ½æœ‰ç©ºæ ¼
     public class MenuManager : MonoBehaviour
     {
-        // ¤èªkMethod
-        // »yªk: ­×¹¢µü ¶Ç¦^Ãş«¬ ¤èªk¦WºÙ()
-        // { ¤èªkµ{¦¡¤º®e }
+        // æ–¹æ³•Method
+        // èªæ³•: ä¿®é£¾è© å‚³å›é¡å‹ æ–¹æ³•åç¨±()
+        // { æ–¹æ³•ç¨‹å¼å…§å®¹ }
         public void StartGame() 
         {
-            // ¸ü¤J³õ´ºªºAPI
-            SceneManager.LoadScene("¹CÀ¸³õ´º");
+            // è¼‰å…¥å ´æ™¯çš„API
+            SceneManager.LoadScene("éŠæˆ²å ´æ™¯");
         }
 
         public void QuitGame() 
         {
-            // Â÷¶}¹CÀ¸ªºAPI
+            // é›¢é–‹éŠæˆ²çš„API
             Application.Quit();
         }
     }
