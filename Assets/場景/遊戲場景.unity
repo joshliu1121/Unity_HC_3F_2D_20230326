@@ -44136,7 +44136,7 @@ GameObject:
   m_Layer: 0
   m_Name: "\u602A\u7269\u751F\u6210\u9EDE1"
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -44148,7 +44148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925815059}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.75, y: 6.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44167,6 +44167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0cf506a337cb1f4b9fc232205e7eb5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interval: 3.5
+  prefabEnemy: {fileID: 1217724888715011309, guid: de66ce7f33e01164d8b16ef1d3fc1267,
+    type: 3}
 --- !u!1001 &2001248899
 PrefabInstance:
   m_ObjectHideFlags: 0
