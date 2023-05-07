@@ -9,5 +9,18 @@ namespace LSC
 
         [Header("生成怪物預置物")]
         public GameObject prefabEnemy;
+
+        private void Awake()
+        {
+            InvokeRepeating("SpawnEnemy", 0, interval);
+        }
+
+        private void SpawnEnemy()
+        {
+
+            //生成物件的方法(要生成的物件  , 腳本物件座標 , 腳本物件角度);
+            Instantiate(prefabEnemy, transform.position, transform.rotation);
+
+        }
     }
 }

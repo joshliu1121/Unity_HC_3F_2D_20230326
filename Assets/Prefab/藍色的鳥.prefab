@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7765496218605399492}
   - component: {fileID: 8403209111017973978}
   - component: {fileID: 6677649419425231768}
+  - component: {fileID: 971520116}
+  - component: {fileID: 971520115}
   m_Layer: 0
   m_Name: "\u85CD\u8272\u7684\u9CE5"
   m_TagString: Untagged
@@ -123,3 +125,38 @@ CircleCollider2D:
   m_Offset: {x: 0.004069984, y: 0.004069984}
   serializedVersion: 2
   m_Radius: 0.32112354
+--- !u!50 &971520116
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326783727441944911}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &971520115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6326783727441944911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50137db64e19274c9bd8bf079cb5fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3.5
+  player: {fileID: 0}
