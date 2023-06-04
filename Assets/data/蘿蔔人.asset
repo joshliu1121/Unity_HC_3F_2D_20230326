@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: "\u863F\u8514\u4EBA"
   m_EditorClassIdentifier: 
   hp: 500
-  prefabExp: {fileID: 1217724888715011309, guid: de66ce7f33e01164d8b16ef1d3fc1267,
+  prefabExp: {fileID: 3247451027975359336, guid: 3f9ae5ab7e2e4a549ae4de7f0f01dee6,
     type: 3}
   dropProbability: 0.8
