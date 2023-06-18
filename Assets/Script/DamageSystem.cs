@@ -7,7 +7,7 @@ namespace LSC
     public class DamageSystem : MonoBehaviour
     {
         [Header("血量資料")]
-        public dataHealth data;
+        public DataHealth data;
 
         private float hp;
 

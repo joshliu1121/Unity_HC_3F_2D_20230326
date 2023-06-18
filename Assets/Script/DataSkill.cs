@@ -13,4 +13,10 @@ public class DataSkill : ScriptableObject
     public string description;
 
     public int lv = 1;
+
+    private void OnDisable()
+    {
+        lv = 1;
+
+    }
 }

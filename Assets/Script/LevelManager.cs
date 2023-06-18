@@ -59,7 +59,7 @@ namespace LSC
             print($"<color = yellow>當前經驗值:{exp}</color>");
 
             //如果 經驗值 >= 當前等級需求 並且 等級 < 等級上限 就 升級
-            if (exp >= expNeeds[lv - 1] && lv <lvMax)
+            if (exp >= expNeeds[lv - 1] && lv < lvMax)
             {
                 exp -= expNeeds[lv - 1]; //計算多出來的經驗值
                 lv++;                    //等級提升(+1)
@@ -72,7 +72,7 @@ namespace LSC
 
         }
 
-        private void LevelUp() 
+        private void LevelUp()
         {
             goLevelUp.SetActive(true);
 
@@ -84,9 +84,64 @@ namespace LSC
             for (int i = 0; i < 3; i++)
             {
                 gochooseSkills[i].transform.Find("技能名稱").GetComponent<TextMeshProUGUI>().text = randomSkill[i].nameSkill;
-            }
-        } 
+                gochooseSkills[i].transform.Find("技能描述").GetComponent<TextMeshProUGUI>().text = randomSkill[i].description;
+                gochooseSkills[i].transform.Find("技能等級").GetComponent<TextMeshProUGUI>().text = "等級Lv" + randomSkill[i].lv;
 
+                gochooseSkills[i].transform.Find("技能圖片").GetComponent<Image>().sprite = randomSkill[i].iConSkill;
+            }
+        }
+
+        public void clickSkillButton(int number)
+        {
+            //print("按下按鈕" + number);
+
+            //該技能等級+1
+            randomSkill[number].lv++;
+            //按下的技能升級
+            if (randomSkill[number].nameSkill == "移動速度") UpdateMoveSpeed(number);
+            if (randomSkill[number].nameSkill == "武器攻擊") UpdateWeaponAttack();
+            if (randomSkill[number].nameSkill == "武器間隔") UpdateWeaponInterval(number);
+            if (randomSkill[number].nameSkill == "玩家血量") UpdatePlayerHealth(number);
+            if (randomSkill[number].nameSkill == "經驗值範圍") UpdateExpRange();
+
+        }
+
+        
+       
+        [Header("控制系統:蘑菇")]
+        public ControlSystem controlSystem;
+        [Header("武器系統:蘑菇")]
+        public WeaponSystem weaponSystem;
+        [Header("玩家血量:玩家蘑菇")]
+        public DataHealth dataHealth;
+
+        public void UpdateMoveSpeed(int number)
+        {
+            int lv = randomSkill[number].lv;
+            controlSystem.MoveSpeed = randomSkill[number].skillValues[lv - 1];
+        }
+
+        public void UpdateWeaponAttack()
+        {
+
+        }
+
+        public void UpdateWeaponInterval(int number)
+        {
+            int lv = randomSkill[number].lv;
+            weaponSystem.interval = randomSkill[number].skillValues[lv - 1];
+        }
+
+        public void UpdatePlayerHealth(int number)
+        {
+            int lv = randomSkill[number].lv;
+            dataHealth.hp = randomSkill[number].skillValues[lv - 1];
+        }
+
+        public void UpdateExpRange()
+        {
+
+        }
 
     }
 }

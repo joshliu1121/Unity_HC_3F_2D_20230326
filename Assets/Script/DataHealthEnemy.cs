@@ -4,7 +4,7 @@
 namespace LSC
 {
    [CreateAssetMenu(menuName = "LSC/DataHealthEnemy")]
-    public class DataHealthEnemy : dataHealth
+    public class DataHealthEnemy : DataHealth
     {
         [Header("掉落經驗值物件")]
         public GameObject prefabExp;

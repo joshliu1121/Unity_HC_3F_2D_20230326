@@ -2,7 +2,7 @@
 
 namespace LSC
 {
-    public class weaponSystem : MonoBehaviour
+    public class WeaponSystem : MonoBehaviour
     {
         [Header("生成間隔"), Range(0, 10)]
         public float interval = 1.5f;
