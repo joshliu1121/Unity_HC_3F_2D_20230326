@@ -1980,7 +1980,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &461260026
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2125,7 +2125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508617949}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.040000476, y: 3.02, z: -10}
+  m_LocalPosition: {x: 0.040000238, y: 3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -41267,6 +41267,15 @@ MonoBehaviour:
   textExp: {fileID: 273274813}
   imgExp: {fileID: 1832513644}
   lvMax: 100
+  goLevelUp: {fileID: 461260025}
+  gochooseSkills: []
+  dataSkills:
+  - {fileID: 11400000, guid: cf12be22caf085b49a3aa401d1991590, type: 2}
+  - {fileID: 11400000, guid: 0c67740667cf2f4428b2b7cbb7e6b826, type: 2}
+  - {fileID: 11400000, guid: fa812a96e35e8234f9639c4f1d4b3315, type: 2}
+  - {fileID: 11400000, guid: c6546de3cce873c4eab368e18dd5402c, type: 2}
+  - {fileID: 11400000, guid: 3972d16c81c411d479af8373ddc0bff6, type: 2}
+  randomSkill: []
   expNeeds:
   - 100
   - 200
@@ -45873,7 +45882,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674298772}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.040000476, y: 3.02, z: -10}
+  m_LocalPosition: {x: 0.040000238, y: 3.02, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

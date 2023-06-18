@@ -1,6 +1,8 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace LSC
 {
@@ -15,6 +17,17 @@ namespace LSC
 
         private int lv = 1;
         private float exp;
+
+        [Header("升級面板")]
+        public GameObject goLevelUp;
+
+        [Header("技能選取面板")]
+        public GameObject[] gochooseSkills;
+
+        [Header("全部技能")]
+        public DataSkill[] dataSkills;
+
+        public List<DataSkill> randomSkill = new List<DataSkill>();
 
 
         //陣列
@@ -51,12 +64,28 @@ namespace LSC
                 exp -= expNeeds[lv - 1]; //計算多出來的經驗值
                 lv++;                    //等級提升(+1)
                 textLv.text = $"Lv{lv}"; //更新等級介面
+                LevelUp();
             }
 
             textExp.text = $"{exp}/{expNeeds[lv - 1]}";
             imgExp.fillAmount = exp / expNeeds[lv - 1];
 
         }
+
+        private void LevelUp() 
+        {
+            goLevelUp.SetActive(true);
+
+            //技能必須小於5
+            randomSkill = dataSkills.Where(x => x.lv < 5).ToList();
+            //5個技能隨機排序
+            randomSkill = randomSkill.OrderBy(x => Random.Range(0, 999)).ToList();
+
+            for (int i = 0; i < 3; i++)
+            {
+                gochooseSkills[i].transform.Find("技能名稱").GetComponent<TextMeshProUGUI>().text = randomSkill[i].nameSkill;
+            }
+        } 
 
 
     }
