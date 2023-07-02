@@ -13,9 +13,10 @@ namespace LSC
         #region 宣告
         [Header("追蹤速度")]
         public float moveSpeed = 2.5f;
+        [Header("敵人資料")]
+        public Transform player;
 
-        public Transform player; 
-        #endregion
+            #endregion
 
        
         

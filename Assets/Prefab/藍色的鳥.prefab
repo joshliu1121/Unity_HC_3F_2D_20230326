@@ -174,3 +174,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 7254cae20541c7743a7eb259ec64a580, type: 2}
+  prefabDamage: {fileID: 3882232816868401027, guid: 8a92d3788301901489034eff33d54f62,
+    type: 3}

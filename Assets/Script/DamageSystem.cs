@@ -1,4 +1,5 @@
-﻿using Unity.VisualScripting;
+﻿using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -8,6 +9,8 @@ namespace LSC
     {
         [Header("血量資料")]
         public DataHealth data;
+        [Header("畫布傷害值")]
+        public GameObject prefabDamage;
 
         private float hp;
 
@@ -41,6 +44,10 @@ namespace LSC
             {
                 Dead();
             }
+
+            GameObject tempDamage = Instantiate(prefabDamage, transform.position, transform.rotation);
+            tempDamage.transform.Find("文字傷害值").GetComponent<TextMeshProUGUI>().text = damage.ToString();
+            Destroy(tempDamage, 1.5f);
         }
 
         private void Dead()
