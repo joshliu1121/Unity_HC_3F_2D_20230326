@@ -24,27 +24,29 @@ namespace LSC
             //print(collision.gameObject);
             if (collision.gameObject.name.Contains("武器"))
             {
+                float attack = collision.gameObject.GetComponent<Weapon>().attack;
                 //print("被武器打到");
-                GetDamage();
+                GetDamage(attack);
             }
         }
 
 
-        private void GetDamage()
+        private void GetDamage(float damage)
         {
+            print($"<color=#ff6699>受到的傷害 {damage}</color>");
             hp -= 50;
             //print("血量剩下:" + hp);
 
             if (hp <= 0)
             {
                 Dead();
-                DropExp();
             }
         }
 
         private void Dead()
         {
             Destroy(gameObject);
+            DropExp();
         }
 
         private void DropExp()

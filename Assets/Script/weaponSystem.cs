@@ -12,6 +12,7 @@ namespace LSC
 
         [Header("武器生成位置")]
         public Transform pointWeapon;
+       
 
         private void SpwanWeapon()
         {

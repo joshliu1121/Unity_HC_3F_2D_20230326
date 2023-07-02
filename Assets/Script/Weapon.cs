@@ -9,6 +9,8 @@ namespace LSC
 
         [Header("武器發射力道")]
         public Vector2 power;
+        [Header("攻擊力"), Range(0, 500)]
+        public float attack = 50;
 
         private void Awake()
         {

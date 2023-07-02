@@ -8,6 +8,9 @@ namespace LSC
 {
     public class LevelManager : MonoBehaviour
     {
+        #region 資料
+
+
         [Header("等級與經驗值介面")]
         public TextMeshProUGUI textLv;
         public TextMeshProUGUI textExp;
@@ -28,7 +31,9 @@ namespace LSC
         public DataSkill[] dataSkills;
 
         public List<DataSkill> randomSkill = new List<DataSkill>();
+        #endregion
 
+        #region 經驗值系統
 
         //陣列
         public float[] expNeeds = { 100, 200, 300 }; //寫法1 量沒那麼多可以使用
@@ -47,33 +52,10 @@ namespace LSC
 
             }
         }
-
-        /// <summary>
-        /// 獲得經驗值
-        /// </summary>
-        /// <param name="getExp">取得經驗值的浮點數</param>
-        public void GetExp(float getExp)
-        {
-            exp += getExp;
-
-            print($"<color = yellow>當前經驗值:{exp}</color>");
-
-            //如果 經驗值 >= 當前等級需求 並且 等級 < 等級上限 就 升級
-            if (exp >= expNeeds[lv - 1] && lv < lvMax)
-            {
-                exp -= expNeeds[lv - 1]; //計算多出來的經驗值
-                lv++;                    //等級提升(+1)
-                textLv.text = $"Lv{lv}"; //更新等級介面
-                LevelUp();
-            }
-
-            textExp.text = $"{exp}/{expNeeds[lv - 1]}";
-            imgExp.fillAmount = exp / expNeeds[lv - 1];
-
-        }
-
         private void LevelUp()
         {
+            //時間暫停
+            Time.timeScale = 0;
             goLevelUp.SetActive(true);
 
             //技能必須小於5
@@ -99,21 +81,62 @@ namespace LSC
             randomSkill[number].lv++;
             //按下的技能升級
             if (randomSkill[number].nameSkill == "移動速度") UpdateMoveSpeed(number);
-            if (randomSkill[number].nameSkill == "武器攻擊") UpdateWeaponAttack();
+            if (randomSkill[number].nameSkill == "武器攻擊") UpdateWeaponAttack(number);
             if (randomSkill[number].nameSkill == "武器間隔") UpdateWeaponInterval(number);
             if (randomSkill[number].nameSkill == "玩家血量") UpdatePlayerHealth(number);
-            if (randomSkill[number].nameSkill == "經驗值範圍") UpdateExpRange();
+            if (randomSkill[number].nameSkill == "經驗值範圍") UpdateExpRange(number);
+
+            Time.timeScale = 1;
+            goLevelUp.SetActive(false);
 
         }
-
         
-       
+        /// <summary>
+        /// 獲得經驗值
+        /// </summary>
+        /// <param name="getExp">取得經驗值的浮點數</param>
+        public void GetExp(float getExp)
+        {
+            exp += getExp;
+
+            print($"<color = yellow>當前經驗值:{exp}</color>");
+
+            //如果 經驗值 >= 當前等級需求 並且 等級 < 等級上限 就 升級
+            if (exp >= expNeeds[lv - 1] && lv < lvMax)
+            {
+                exp -= expNeeds[lv - 1]; //計算多出來的經驗值
+                lv++;                    //等級提升(+1)
+                textLv.text = $"Lv{lv}"; //更新等級介面
+                LevelUp();
+            }
+
+            textExp.text = $"{exp}/{expNeeds[lv - 1]}";
+            imgExp.fillAmount = exp / expNeeds[lv - 1];
+
+        }
+        #endregion
+
+        private void Awake()
+        {
+            controlSystem.MoveSpeed = dataSkills[4].skillValues[0];
+            weaponGhost.attack = dataSkills[1].skillValues[0];
+            weaponSystem.interval = dataSkills[2].skillValues[0];
+            dataHealth.hp = dataSkills[3].skillValues[0];
+            expStrawberry.radius = dataSkills[0].skillValues[0];
+        }
+
+        #region 升級系統
+
         [Header("控制系統:蘑菇")]
         public ControlSystem controlSystem;
         [Header("武器系統:蘑菇")]
         public WeaponSystem weaponSystem;
         [Header("玩家血量:玩家蘑菇")]
         public DataHealth dataHealth;
+        [Header("經驗值物件:草莓")]
+        public CircleCollider2D expStrawberry;
+        [Header("武器:幽靈")]
+        public Weapon weaponGhost;
 
         public void UpdateMoveSpeed(int number)
         {
@@ -121,9 +144,10 @@ namespace LSC
             controlSystem.MoveSpeed = randomSkill[number].skillValues[lv - 1];
         }
 
-        public void UpdateWeaponAttack()
+        public void UpdateWeaponAttack(int number)
         {
-
+            int lv = randomSkill[number].lv;
+            weaponGhost.attack = randomSkill[number].skillValues[lv - 1];
         }
 
         public void UpdateWeaponInterval(int number)
@@ -138,10 +162,12 @@ namespace LSC
             dataHealth.hp = randomSkill[number].skillValues[lv - 1];
         }
 
-        public void UpdateExpRange()
+        public void UpdateExpRange(int number)
         {
-
+            int lv = randomSkill[number].lv;
+            expStrawberry.radius = randomSkill[number].skillValues[lv - 1];
         }
 
     }
+    #endregion
 }
