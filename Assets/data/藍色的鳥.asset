@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4457bdfc8394924789f5168dc67b5c5, type: 3}
   m_Name: "\u85CD\u8272\u7684\u9CE5"
   m_EditorClassIdentifier: 
-  hp: 500
+  hp: 200
   prefabExp: {fileID: 3247451027975359336, guid: 3f9ae5ab7e2e4a549ae4de7f0f01dee6,
     type: 3}
   dropProbability: 0.8
+  attack: 50
+  attackInterval: 0.8
+  attackRange: 1

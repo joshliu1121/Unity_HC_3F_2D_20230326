@@ -1,10 +1,10 @@
 ﻿using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 namespace LSC
 {
+    #region 資料
     public class DamageSystem : MonoBehaviour
     {
         [Header("血量資料")]
@@ -12,32 +12,22 @@ namespace LSC
         [Header("畫布傷害值")]
         public GameObject prefabDamage;
 
-        private float hp;
+        protected float hp;
+        protected float hpMax;
 
-        private DataHealthEnemy dataEnemy;
 
         private void Awake()
         {
             hp = data.hp;
-            dataEnemy = (DataHealthEnemy)data;
+            hpMax = hp;
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
-        {
-            //print(collision.gameObject);
-            if (collision.gameObject.name.Contains("武器"))
-            {
-                float attack = collision.gameObject.GetComponent<Weapon>().attack;
-                //print("被武器打到");
-                GetDamage(attack);
-            }
-        }
+        #endregion
 
-
-        private void GetDamage(float damage)
+        public virtual void GetDamage(float damage)
         {
-            print($"<color=#ff6699>受到的傷害 {damage}</color>");
-            hp -= 50;
+            //print($"<color=#ff6699>受到的傷害 {damage}</color>");
+            hp -= damage;
             //print("血量剩下:" + hp);
 
             if (hp <= 0)
@@ -45,25 +35,15 @@ namespace LSC
                 Dead();
             }
 
-            GameObject tempDamage = Instantiate(prefabDamage, transform.position, transform.rotation);
+            GameObject tempDamage = Instantiate(prefabDamage, transform.position, Quaternion.identity);
             tempDamage.transform.Find("文字傷害值").GetComponent<TextMeshProUGUI>().text = damage.ToString();
             Destroy(tempDamage, 1.5f);
         }
 
-        private void Dead()
-        {
-            Destroy(gameObject);
-            DropExp();
-        }
 
-        private void DropExp()
+        protected virtual void Dead()
         {
-            // print("這隻怪物掉落的經驗值機率" + dataEnemy.dropProbability);
-            if (Random.value <= dataEnemy.dropProbability)
-            {
-                Instantiate(dataEnemy.prefabExp, transform.position, transform.rotation);
-            }
-        }
 
+        }
     }
 }

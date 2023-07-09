@@ -71,6 +71,9 @@ namespace LSC
 
                 gochooseSkills[i].transform.Find("技能圖片").GetComponent<Image>().sprite = randomSkill[i].iConSkill;
             }
+
+            AudioClip sound = SoundManager.instance.btnLevelUp;
+            SoundManager.instance.PlaySound(sound, 0.7f, 1.3f);
         }
 
         public void clickSkillButton(int number)
@@ -88,7 +91,8 @@ namespace LSC
 
             Time.timeScale = 1;
             goLevelUp.SetActive(false);
-
+            AudioClip sound = SoundManager.instance.btnUpdateSkill;
+            SoundManager.instance.PlaySound(sound, 0.7f, 1.3f);
         }
         
         /// <summary>
