@@ -27,6 +27,12 @@ namespace LSC
         {
             InvokeRepeating("SpwanWeapon", 0, interval);
         }
+
+        public void ReSpawWeapon() 
+        {
+            CancelInvoke("SpwanWeapon");
+            InvokeRepeating("SpwanWeapon", 0, interval);   //取消重複呼叫方法
+        }
     }
 }
 

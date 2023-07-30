@@ -141,6 +141,8 @@ namespace LSC
         public CircleCollider2D expStrawberry;
         [Header("武器:幽靈")]
         public Weapon weaponGhost;
+        [Header("玩家血量系統:蘑菇")]
+        public DamagePlayer damagePlayer;
 
         public void UpdateMoveSpeed(int number)
         {
@@ -158,12 +160,14 @@ namespace LSC
         {
             int lv = randomSkill[number].lv;
             weaponSystem.interval = randomSkill[number].skillValues[lv - 1];
+            weaponSystem.ReSpawWeapon();
         }
 
         public void UpdatePlayerHealth(int number)
         {
             int lv = randomSkill[number].lv;
             dataHealth.hp = randomSkill[number].skillValues[lv - 1];
+            damagePlayer.UpdateHealth(dataHealth.hp);
         }
 
         public void UpdateExpRange(int number)

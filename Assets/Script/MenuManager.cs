@@ -11,6 +11,7 @@ namespace LSC
         // { 方法程式內容 }
         public void StartGame() 
         {
+            Time.timeScale = 1;
             // 載入場景的API
             SceneManager.LoadScene("遊戲場景");
         }
